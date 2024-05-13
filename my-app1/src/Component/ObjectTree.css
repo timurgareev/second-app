@@ -1,0 +1,51 @@
+.MyComponent2Container {
+    background-color:bisque;
+}
+
+.tree-container {
+    text-align: left;
+    padding-left: 1.2em;
+    font-weight: bold;
+}
+
+.tree-group-object {
+    font-size:medium;
+    /* padding-left: 1.2em; */
+}
+
+.tree-object {
+    font-size:small;
+    padding-left: 1.2em;
+}
+.tree-project {
+    font-size:smaller;
+    padding-left: 1.2em;
+    
+}
+
+.tree-zone {
+    font-size:x-small;
+    padding-left: 1.2em;
+    
+}
+
+.tree-drawing {
+    font-size:xx-small;
+    position: relative;
+    border-left: 2px solid #ddd;
+    font-weight:600;
+    /* padding-left: 1.2em; */
+}
+
+/* .tree-drawing:last-child{
+    border-color: transparent;
+} */
+
+/* .tree-drawing::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left:-2px;
+    border: solid #ddd;
+    border-width: 0 0 2px 2px;
+} */

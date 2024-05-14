@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import './ObjectTree.css'
+import { useState, useEffect } from 'react';
+import './ObjectTree.css';
+import HeaderFilterGroupObjact from './HeaderFilterGroupObjact.js';
 
 function ObjectTree({ onDrawingClick }) {
   const [groups, setGroups] = useState([]);
@@ -10,9 +11,11 @@ function ObjectTree({ onDrawingClick }) {
   }, []);
 
   const fetchData = () => {
+    console.log('fetch tree');
     fetch('http://localhost:8080/api/v1/groups')
       .then(response => response.json())
       .then(data => {
+        console.log('Received data:', data);
         setGroups(data);
         setLoading(false);
       })
@@ -28,6 +31,7 @@ function ObjectTree({ onDrawingClick }) {
 
   return (
     <div className="MyComponent2Container">
+      <HeaderFilterGroupObjact groups={groups}/>
       <h3>Дерево проектов</h3>
       <div className="tree-container">
         {groups && groups.length > 0 ? (

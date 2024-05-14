@@ -27,6 +27,7 @@ function ListOfProjects({ drawingId }) {
                 console.error('Ошибка при получении данных:', error);
                 setLoading(false);
             });
+            console.log('fetch list draw');
     };
 
     if (loading) {
@@ -34,7 +35,7 @@ function ListOfProjects({ drawingId }) {
     }
 
     if (!drawing) {
-        return <p>No data available</p>;
+        return <p>Выберите Шифр проекта - No data available</p>;
     }
 
     return (

@@ -1,6 +1,13 @@
 .MyComponent1Container{
-    background-color: #9da9e7;
+    background-color: #EFE2BA;
+    padding: 20px;
 }
 .project-list-items{
     text-align: left;
 }
+
+.inline {
+    display:inline-block;
+    padding-right: 2em;
+    font-size:x-small;
+   }

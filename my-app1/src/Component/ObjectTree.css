@@ -1,16 +1,18 @@
 .MyComponent2Container {
-    background-color:bisque;
+    background-color:#C5CBE3;
+    padding: 10px;
+    /* text-align: left; */
 }
 
 .tree-container {
     text-align: left;
-    padding-left: 1.2em;
+    /* padding-left: 1.2em; */
     font-weight: bold;
 }
 
 .tree-group-object {
     font-size:medium;
-    /* padding-left: 1.2em; */
+    padding-left: 0.7em;
 }
 
 .tree-object {

@@ -5,11 +5,19 @@ import HeaderFilterGroupObjact from './HeaderFilterGroupObjact.js';
 function ObjectTree({ onDrawingClick }) {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedGroupId, setSelectedGroupId] = useState(null);
+  const [filteredGroups, setFilteredGroups] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Фильтрация данных на основе выбранного ID группы
+    const filteredGroups = groups.filter(group => group.id === selectedGroupId);
+    setFilteredGroups(filteredGroups);
+  }, [groups, selectedGroupId]);
+  
   const fetchData = () => {
     console.log('fetch tree');
     fetch('http://localhost:8080/api/v1/groups')
@@ -29,13 +37,23 @@ function ObjectTree({ onDrawingClick }) {
     return <p>Loading...</p>;
   }
 
+  const handleGroupSelect = (groupId) => {
+    setSelectedGroupId(groupId);
+  }
+
+
+
+  // const filteredGroups = groups.filter(group =>{
+  //   return group.id === 1;
+  // })
+
   return (
     <div className="MyComponent2Container">
-      <HeaderFilterGroupObjact groups={groups}/>
+      <HeaderFilterGroupObjact groups={groups} onGroupSelect={handleGroupSelect}/>
       <h3>Дерево проектов</h3>
       <div className="tree-container">
         {groups && groups.length > 0 ? (
-          renderTree(groups, onDrawingClick)
+          renderTree(filteredGroups, onDrawingClick)
         ) : (
           <p>No data available</p>
         )}

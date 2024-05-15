@@ -60,10 +60,22 @@ const renderDrawingDetails = (drawing) => {
             <p>State: {drawing.state}</p>
             <p>Discipline: {drawing.mark.markKey}</p>
             <p>groupDiscipline: {drawing.mark.markReadDTO.discipline.groupDisciplinesReadDTO.name}</p>
+            <p>Description: {drawing.description}</p>
             <p>Revision:</p>
             <ul>
                 {drawing.revision.map(rev => (
-                    <li key={rev.id}>{rev.name}</li>
+                    <li key={rev.id} >
+                        <div>
+                            <div className='inline'>№{rev.rateNumber}</div>
+                            <div className='inline'>изм. {rev.name}</div>
+                            <div className='inline'>{rev.status}</div>
+                            <div className='inline'>вх: {rev.dataInbox} исх: {rev.dateOutbox}</div>
+                            <div className='inline'>ВПР: {rev.inproducrionDateSystem}</div>
+                            <div className='inline'>посл: {rev.isLatest}</div>
+                            <div className='inline'>comment: {rev.comment1}</div>
+                        </div>
+                        
+                    </li>
                 ))}
             </ul>
         </div>

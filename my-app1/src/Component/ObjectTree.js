@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import './ObjectTree.css';
 import HeaderFilterGroupObjact from './HeaderFilterGroupObjact.js';
+import ApiService from '../services/ApiService.js';
 
 function ObjectTree({ onDrawingClick }) {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
   const [filteredGroups, setFilteredGroups] = useState([]);
+
+  const apiService = new ApiService();
 
   useEffect(() => {
     fetchData();
@@ -18,10 +21,24 @@ function ObjectTree({ onDrawingClick }) {
     setFilteredGroups(filteredGroups);
   }, [groups, selectedGroupId]);
   
+  // const fetchData = () => {
+  //   console.log('fetch tree');
+  //   fetch('http://localhost:8080/api/v1/groups')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log('Received data:', data);
+  //       setGroups(data);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Ошибка при получении данных:', error);
+  //       setLoading(false);
+  //     });
+  // };
+
   const fetchData = () => {
     console.log('fetch tree');
-    fetch('http://localhost:8080/api/v1/groups')
-      .then(response => response.json())
+    apiService.getAllObjects()
       .then(data => {
         console.log('Received data:', data);
         setGroups(data);

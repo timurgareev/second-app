@@ -25,6 +25,8 @@ import ObjectTree from './ObjectTree';
 import ListOfProjects from './ListOfProjects';
 import Header from './Header';
 import HeaderFilterGroupObjact from './HeaderFilterGroupObjact';
+import ComboBox from '../TestUIMat';
+import Button from '@mui/material/Button';
 
 const BootstrapTest = () => {
     // Создаем состояние для хранения ID выбранного рисунка
@@ -36,6 +38,8 @@ const BootstrapTest = () => {
     };
 
     return (
+        <div>
+        {/* <Button variant="contained">Hello world</Button> */}
         <Container fluid>
             <Row>
                 
@@ -52,9 +56,12 @@ const BootstrapTest = () => {
                     {/* Передаем selectedDrawingId в компонент ListOfProjects */}
                     <ListOfProjects drawingId={selectedDrawingId} />
                 </Col>
-                <Col xs={3}>3 of 3</Col>
+                <Col xs={3}>
+                    
+                </Col>
             </Row>
         </Container>
+        </div>
     );
 }
 

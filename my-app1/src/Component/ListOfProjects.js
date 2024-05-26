@@ -1,34 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import './ListOfProjects.css';
+import ApiService from '../services/ApiService';
 
 function ListOfProjects({ drawingId }) {
     const [drawing, setDrawing] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const apiService = new ApiService();
+
     useEffect(() => {
         fetchData();
     }, [drawingId]); 
 
-    const fetchData = () => {
-        if (!drawingId) {
-            setDrawing(null);
-            setLoading(false);
-            return;
-        }
+    // const fetchData = () => {
+    //     if (!drawingId) {
+    //         setDrawing(null);
+    //         setLoading(false);
+    //         return;
+    //     }
 
-        fetch(`http://localhost:8080/api/v1/drawings/${drawingId}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Received data:', data);
-                setDrawing(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Ошибка при получении данных:', error);
-                setLoading(false);
-            });
-            console.log('fetch list draw');
-    };
+    //     fetch(`http://localhost:8080/api/v1/drawings/${drawingId}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log('Received data:', data);
+    //             setDrawing(data);
+    //             setLoading(false);
+    //         })
+    //         .catch(error => {
+    //             console.error('Ошибка при получении данных:', error);
+    //             setLoading(false);
+    //         });
+    //         console.log('fetch list draw');
+    // };
+    const fetchData = () => {
+        console.log('fetch drawing');
+        apiService.getDrawingsById(drawingId)
+          .then(data => {
+            console.log('Received data:', data);
+            setDrawing(data);
+            setLoading(false);
+          })
+          .catch(error => {
+            console.error('Ошибка при получении данных:', error);
+            setLoading(false);
+          });
+      };
 
     if (loading) {
         return <p>Loading...</p>;
